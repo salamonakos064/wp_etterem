@@ -1,0 +1,19 @@
+.margin-side{
+    width: 25%;
+    margin: auto; 
+    text-align: center;
+}
+.table-design{
+    width: 50%;
+    margin: auto;
+    border: 1px solid black;
+    
+}
+.button-size{
+    width:50%;
+    margin:auto;
+}
+.table-design td{
+    border: 1px solid black;
+    width: auto;
+}
