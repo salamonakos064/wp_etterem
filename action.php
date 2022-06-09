@@ -27,31 +27,37 @@ function requestEmail($user,$email,$token,$num){
     $header .= "X-Priority: 1\n";
     $header .= "Reply-To:support@example.com\r\n";
     $header .= "Content-Type: text/html; charset=UTF-8\n";
-    $subject="Activate your account";
+    
+    if($num!=3){$subject="Activate your account";}
+    else{$subject="Your place has been reserved";}
     if($num==1){
     $content="Greetings " . $user." please activate your account to use our website\n";
     $content.= SITE."/token.php?p=".$token;
     }
-    else{
+    else if($num==2){
     $content="Greetings " . $user." please reset your password to use our website\n";
     $content.= SITE."/password.php?token=".$token;
+    }
+    else{
+        $content="Greetings ".$user." your reserevation code is: ".$token;
     }
     return mail($to,$subject,$content,$header);
 }
 
 function headerSite(){
-    if(!empty($_COOKIE["data1"]) and !empty($_COOKIE["data2"]) and !empty($_COOKIE["data3"]))
+    if(!empty($_COOKIE["data1"]) and !empty($_COOKIE["data2"]) and !empty($_COOKIE["data3"]) and !empty($_COOKIE["data4"]))
     {
         $_SESSION["user-name"]=$_COOKIE["data1"];
         $_SESSION["password"]=$_COOKIE["data2"];
         $_SESSION["user-type"]=$_COOKIE["data3"];
+        $_SESSION["email"]=$_COOKIE["data4"];
     }
     if(isset($_SESSION["user-name"]) and !empty($_SESSION["user-name"]) )
 {
      
 	 echo "<div class=\"dropdown text-end\">";
      echo "<a href=\"#\" class=\"d-block link-dark text-decoration-none dropdown-toggle\" id=\"dropdownUser1\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">";
-    echo "<img src=\"https://github.com/mdo.png\" alt=\"img\" width=\"32\" height=\"32\" class=\"rounded-circle\">";
+    echo "<img src=\"img/user.png\" alt=\"img\" width=\"32\" height=\"32\" class=\"rounded-circle\">";
      echo "</a>";
      echo "<ul class=\"dropdown-menu text-small\" aria-labelledby=\"dropdownUser1\">";
      echo "<li><a class=\"dropdown-item\" href=\"reserve.php\">Reserve now!</a></li>";

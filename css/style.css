@@ -10,10 +10,21 @@
     
 }
 .button-size{
-    width:50%;
-    margin:auto;
+    width: 50%;
+    margin: auto;
 }
 .table-design td{
     border: 1px solid black;
     width: auto;
+}
+.button-custom{
+    background-color: #bbbbbb;
+    text-decoration: none;
+    color: #111111;
+    width: 100%;
+    padding: 0.5em;
+    border: 5px;
+}
+.button-custom:hover{
+    background-color: #dddddd;
 }

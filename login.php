@@ -24,10 +24,11 @@ else{
                     setcookie("data1",$row[0],time()+ 60*60*24);
                     setcookie("data2",$row[1],time()+ 60*60*24);
                     setcookie("data3",$row[2],time()+ 60*60*24);
+                    setcookie("data4",$user,time()+ 60*60*24);
 
             }
             $_SESSION["user-name"]=$row[0];
-
+            $_SESSION["email"]=$user;
             $_SESSION["password"]=$row[1];
             $_SESSION["user-type"]=$row[2];
             header("location:index.php");

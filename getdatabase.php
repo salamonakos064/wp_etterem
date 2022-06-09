@@ -44,8 +44,13 @@ require_once "db_config.php";
       echo "</table>";
       echo "<div class=\"container button-size\">";
       
-      if($_GET["user-type"]==1){echo "<input type=\"submit\" name=\"s\" class=\"col-md-6 btn btn-primary\" value=\"delete\">";
-      echo "<input type=\"submit\" name=\"s\" class=\"col-md-6 btn btn-primary\" value=\"edit\">";
+      if($_GET["user-type"]==1)
+      {
+        echo "<div class=\"row\">";
+        echo "<input type=\"submit\" name=\"s\" class=\"col-12 col-md-4 btn btn-primary\" value=\"discard\">";
+        echo "<input type=\"submit\" name=\"s\" class=\"col-12 col-md-4 btn btn-primary\" value=\"delete\">";
+        echo "<input type=\"submit\" name=\"s\" class=\"col-12 col-md-4 btn btn-primary\" value=\"edit\">";
+        echo "</div>";
       }
       else{
           echo "<p><label for=\"note\">notes</label></p>";
@@ -56,7 +61,7 @@ require_once "db_config.php";
       echo "</form>";
       if($_GET["user-type"]==1)
 {
-  echo   "<div class=\"alert alert-warning\" role=\"alert\">Reservation can only be deleted 4 hours ahead</div>";
+  echo   "<div class=\"alert alert-warning\" role=\"alert\">Reservation can only be deleted and edited 4 hours ahead</div>";
 }
     
     }

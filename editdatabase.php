@@ -9,7 +9,7 @@ else
 {
 $reserve=$_POST["reserve"];
 
-if($_POST["s"]=="delete")
+if($_POST["s"]=="discard")
 {
     
     $sql="update reservation set activated=0,deleted_by_user=1 where reservation_code='$reserve' and now()<=Date_sub(date,interval 4 hour)";
@@ -23,7 +23,10 @@ else if($_POST["s"]=="book")
     echo $notes;
     $sql="update reservation set activated=0,notes='$notes' where reservation_code='$reserve'";
 }
-
+else if($_POST["s"]=="delete")
+{
+    $sql="delete from reservation where reservation_code='$reserve'";
+}
 else if($_POST["s"]=="edit")
 {
    header("location:edit.php?p=$reserve");

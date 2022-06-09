@@ -13,15 +13,17 @@ require_once "action.php";
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
+    <meta name="robots" content="noindex,nofollow">
     <title>Reserve spaces</title>
-
+    <script src="js/script2.js"></script>
+    <script src="js/form-validation.js"></script>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/headers/">
 
     
 
     <!-- Bootstrap core CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
-
+<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/placeholder.css">
 
     
@@ -85,88 +87,77 @@ require_once "action.php";
 
   <div class="b-example-divider"></div>
   <div class="container">
-   <div class=" dropdown-menu p-2 shadow d-flex  " style="width: 340px" id="dropdownCalendar">
-    <div class="d-grid  gap-1">
-      <div class="cal">
-        <div class="cal-month">
-          <button class="btn cal-btn" type="button">
-            <svg class="bi" width="16" height="16"><use xlink:href="#arrow-left-short"/></svg>
-          </button>
-          <strong class="cal-month-name">April</strong>
-          <select class="form-select cal-month-name d-none">
-            <option value="January">January</option>
-            <option value="February">February</option>
-            <option value="March">March</option>
-            <option selected  value="April">April</option>
-            <option value="May">May</option>
-            <option value="June">June</option>
-            <option value="July">July</option>
-            <option value="August">August</option>
-            <option value="September">September</option>
-            <option value="October">October</option>
-            <option value="November">November</option>
-            <option value="December">December</option>
-          </select>
-          <button class="btn cal-btn" type="button">
-            <svg class="bi" width="16" height="16"><use xlink:href="#arrow-right-short"/></svg>
-          </button>
-        </div>
-        <div class="cal-weekdays text-muted">
-          <div class="cal-weekday">Mon</div>
-          <div class="cal-weekday">Tue</div>
-          <div class="cal-weekday">Wed</div>
-          <div class="cal-weekday">Thu</div>
-          <div class="cal-weekday">Fri</div>
-          <div class="cal-weekday">Sat</div>
-          <div class="cal-weekday">Sun</div>
-        </div>
-        <div class="cal-days">
-          <button class="btn cal-btn" disabled type="button">28</button>
-          <button class="btn cal-btn" disabled type="button">29</button>
-          <button class="btn cal-btn" disabled type="button">30</button>
-          <button class="btn cal-btn" disabled type="button">31</button>
-  
-          <button class="btn cal-btn" type="button">1</button>
-          <button class="btn cal-btn" type="button">2</button>
-          <button class="btn cal-btn" type="button">3</button>
-          <button class="btn cal-btn" type="button">4</button>
-          <button class="btn cal-btn" type="button">5</button>
-          <button class="btn cal-btn" type="button">6</button>
-          <button class="btn cal-btn" type="button">7</button>
-  
-          <button class="btn cal-btn" type="button">8</button>
-          <button class="btn cal-btn" type="button">9</button>
-          <button class="btn cal-btn" type="button">10</button>
-          <button class="btn cal-btn" type="button">11</button>
-          <button class="btn cal-btn" type="button">12</button>
-          <button class="btn cal-btn" type="button">13</button>
-          <button class="btn cal-btn" type="button">14</button>
-  
-          <button class="btn cal-btn" type="button">15</button>
-          <button class="btn cal-btn" type="button">16</button>
-          <button class="btn cal-btn" type="button">17</button>
-          <button class="btn cal-btn" type="button">18</button>
-          <button class="btn cal-btn" type="button">19</button>
-          <button class="btn cal-btn" type="button">20</button>
-          <button class="btn cal-btn" type="button">21</button>
-  
-          <button class="btn cal-btn" type="button">22</button>
-          <button class="btn cal-btn" type="button">23</button>
-          <button class="btn cal-btn" type="button">24</button>
-          <button class="btn cal-btn" type="button">25</button>
-          <button class="btn cal-btn" type="button">26</button>
-          <button class="btn cal-btn" type="button">27</button>
-          <button class="btn cal-btn" type="button">28</button>
-  
-          <button class="btn cal-btn" type="button">29</button>
-          <button class="btn cal-btn" type="button">30</button>
-          <button class="btn cal-btn" type="button">31</button>
-        </div>
-      </div>
-    </div>
+    <div class="row">
+      <h1 class="text-center col-12">Reserve now</h1>
+      <h1 class="text-center col-12">Map below</h1>
+</div>
+   <div class="row">
+    <img src="img/map.png" alt="map" class="text-center button-size col-12S">
+</div>
+   
   </div>
+   <form method="POST" action="editresult.php" class="margin-side">
+        <label for="seats" class="mt-2">seats</label>
+        <select id="seats" class="form-control needs-validation" required>
+    <?php
+        $sql="select distinct num_of_seats from tables order by num_of_seats asc";
+        $result=$conn->prepare($sql);
+        $result->execute();
+        $result->setFetchMode(PDO::FETCH_NUM);
+        while($row=$result->fetch())
+        {
+            echo "<option value=\"$row[0]\">$row[0]</option>";
+        }
+    ?>
+    </select>
+<label for="smoke">smoke</label>
+    <select id="smoke" class="form-control needs-validation" required>
+        <option value="0">no</option>
+        <option value="1">yes</option>
+    </select>
+    <label for="number" class="mt-2">Table_number</label>
+    <select id="number" name="number" class="form-control needs-validation" required>
+    </select>
+    <label for="date" class="mt-2">Date</label>
+    <input type="datetime-local" id="date" name="date" class="form-control needs-validation" required>
+   <label for="duration">Duration</label>
+   <select name="duration" id="duration" class="form-control needs-validation" required>
+    </select>
+    
 
-
+    <?php
+    if(!empty($_SESSION["user-name"]))
+    {
+      $user=$_SESSION["user-name"];
+      $email=$_SESSION["email"];
+      echo "<input type=\"hidden\" name=\"reserve\" value= \"$user\">";
+      echo "<input type=\"hidden\" name=\"email\" value= \"$email\">";
+       echo "<input type=\"submit\" name=\"s\" value=\"reserve\" class=\"form-control btn btn-primary mt-3\">";
+    
+    }
+    else
+    {
+      echo "<h1>To reserve a table you need to log in</h1>";
+    }
+    ?>
+</form>
+<?php
+if(!empty($_GET["p"]))
+{
+  
+  if($_GET["p"]==2){
+    echo "<div class=\"alert alert-success button-size role=\"alert\"\">Operation successful<div>";
+  }
+  if($_GET["p"]==3)
+  {
+    echo "<div class=\"alert alert-danger button-size role=\"alert\"\">Seat already reserved<div>";
+  }
+  if($_GET["p"]==4)
+  {
+    echo "<div class=\"alert alert-danger button-size role=\"alert\"\">Operation not permitted<div>";
+  }
+}
+?>
 </main>
 
 
