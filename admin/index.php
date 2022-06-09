@@ -22,6 +22,7 @@ if($_SESSION["user-type"]!=3)
 <div class="row">
     <a href="content.php?p=1" class="button-custom">Tables</a>
     <a href="content.php?p=2" class="button-custom">Reservations</a>
+    <a href="content.php?p=5" class="button-custom">Foods</a>
     <a href="content.php?p=3" class="button-custom">Users</a>
     <a href="content.php?p=4" class="button-custom">Menu</a>
 </div>

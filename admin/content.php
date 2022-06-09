@@ -61,6 +61,49 @@ if($_SESSION["user-type"]!=3)
             echo "<tr><td></td><td>user name</td>
             <td>email</td><td>password</td><td>first name</td><td>last name</td><td>phone number</td><td>user type</td> <td>activated</td></tr>";
         }
+        else if($_GET["p"]==5)
+        {
+            if(isset($_GET["date"])&&isset($_GET["value"]))
+            {
+                $value=$_GET["value"];
+                $sql="update food set ";
+                if (empty($_GET["date"]))
+                {
+                   $sql.="recommendation_date=Null";
+                }
+                else{
+                    $date=$_GET["date"];
+                    $sql.="recommendation_date='$date'";
+                }
+                $sql.=" where id='$value'";
+                $result=$conn->prepare($sql);
+                $result->execute();
+                
+            }
+            if(!empty($_GET["v"]) && !empty($_GET["value"])){
+            if($_GET["v"]=="delete")
+            {
+                $value=$_GET["value"];
+                $sql="delete from food where id='$value'";
+                $result=$conn->prepare($sql);
+                $result->execute();
+                
+            }
+        }
+                if(isset($_GET["name"]))
+                {
+                    echo 'pp';
+                    $ind = $_GET["id"];
+                    $name=$_GET["name"];
+                    $sql="insert into food (id, name) values ('$ind', '$name')";
+                    $result=$conn->prepare($sql);
+                    $result->execute();
+                }
+                
+            $sql="select * from food";
+            echo "<tr><td></td><td>food id</td>
+            <td>food name</td><td>food date</td></tr>";
+        }
         else{
             header("location:index.php");
         }
@@ -76,6 +119,10 @@ if($_SESSION["user-type"]!=3)
             echo "</td>";
             foreach($row as $rows)
             {
+                if($rows =='')
+                {
+                    $rows = 'NULL';
+                }
                 echo "<td>$rows</td>";
             }
             echo "</tr>";
@@ -99,6 +146,48 @@ if($_SESSION["user-type"]!=3)
             echo "<input type=\"hidden\" name=\"p\" value=\"2\">";
             echo "<input type=\"submit\" class=\"button-size col-6\">";
             echo "</div>";
+            
+        }
+        if($_GET["p"]==5)
+        {
+            echo "<div class=\"row\">";
+           
+            echo "<input type=\"hidden\" name=\"p\" value=\"5\">";
+            echo "<input type=\"submit\" name=\"v\" value=\"edit\" class=\"button-size col-4\">";
+            echo "<input type=\"submit\" name=\"v\" value=\"delete\" class=\"button-size col-4\">";
+            echo "<input type=\"submit\" name=\"v\" value=\"insert\" class=\"button-size col-4\">";
+
+
+
+            if(!empty($_GET["v"]) ){
+                if($_GET["v"]=="edit")
+                {
+                    echo "<form method=\"get\" action=\"content.php\">";
+                    echo "<input type=\"date\" id=\"date\" name=\"date\" class=\"form-control needs-validation\">";
+                    echo "<input type=\"submit\" name=\"i\" class=\"button-size col-4\">";
+                    echo "</form>";
+                }
+            }
+
+
+
+            echo "</div>";
+            echo "</form>";
+        }
+        if($_GET["p"]==5)
+        {
+            if(!empty($_GET["v"]) ){
+            if($_GET["v"]=="insert")
+            {
+                echo "<form method=\"get\" action=\"content.php\">";
+                echo "<input type=\"hidden\" name=\"p\" value=\"5\">";
+                echo "<input type=\"hidden\" name=\"v\" value=\"insert\">";
+                echo "<input type=\"number\" id=\"id\" name=\"id\" class=\"form-control needs-validation\">";
+                echo "<input type=\"text\" id=\"name\" name=\"name\" class=\"form-control needs-validation\">";
+                echo "<input type=\"submit\" name=\"i\" class=\"button-size col-4\">";
+                echo "</form>";
+            }
+        }
             
         }
         echo "</form>";
