@@ -52,7 +52,7 @@ if($_POST["s"]=="reserve")
            $sql="insert into orders values('$row','$rows','$temp')";
            $result=$conn->prepare($sql);
            $result->execute();  
-           echo "wat";            
+                    
         }
     }
     if($res->rowCount()>0){

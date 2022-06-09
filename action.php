@@ -52,7 +52,7 @@ function headerSite(){
         $_SESSION["user-type"]=$_COOKIE["data3"];
         $_SESSION["email"]=$_COOKIE["data4"];
     }
-    
+        echo "<li> <a href=\"menus.php\" class=\"nav-link px-2 link-dark\">Take a look at the menu</a></li>";  
     if(isset($_SESSION["user-name"]) and !empty($_SESSION["user-name"]) )
 {
     if($_SESSION["user-type"]==3)
