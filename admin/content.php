@@ -169,24 +169,22 @@ if($_SESSION["user-type"]!=3)
                 }
             }
 
+            if(!empty($_GET["v"]) ){
+                if($_GET["v"]=="insert")
+                {
+                    echo "<form method=\"get\" action=\"content.php\">";
+                    echo "<input type=\"hidden\" name=\"p\" value=\"5\">";
+                    echo "<input type=\"hidden\" name=\"v\" value=\"insert\">";
+                    echo "<input type=\"number\" id=\"id\" name=\"id\" class=\"form-control needs-validation\">";
+                    echo "<input type=\"text\" id=\"name\" name=\"name\" class=\"form-control needs-validation\">";
+                    echo "<input type=\"submit\" name=\"i\" class=\"button-size col-4\">";
+                    echo "</form>";
+                }
+
 
 
             echo "</div>";
             echo "</form>";
-        }
-        if($_GET["p"]==5)
-        {
-            if(!empty($_GET["v"]) ){
-            if($_GET["v"]=="insert")
-            {
-                echo "<form method=\"get\" action=\"content.php\">";
-                echo "<input type=\"hidden\" name=\"p\" value=\"5\">";
-                echo "<input type=\"hidden\" name=\"v\" value=\"insert\">";
-                echo "<input type=\"number\" id=\"id\" name=\"id\" class=\"form-control needs-validation\">";
-                echo "<input type=\"text\" id=\"name\" name=\"name\" class=\"form-control needs-validation\">";
-                echo "<input type=\"submit\" name=\"i\" class=\"button-size col-4\">";
-                echo "</form>";
-            }
         }
             
         }
