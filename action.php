@@ -54,7 +54,7 @@ function headerSite(){
     }
         echo "<li> <a href=\"menus.php\" class=\"nav-link px-2 link-dark\">Take a look at the menu</a></li>";  
     if(isset($_SESSION["user-name"]) and !empty($_SESSION["user-name"]) )
-{
+    {
     if($_SESSION["user-type"]==3)
     {
         echo "<li><a href=\"admin/index.php\" class=\"nav-link px-2 link-dark\">Admin Page</a></li>";

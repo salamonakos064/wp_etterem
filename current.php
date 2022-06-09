@@ -92,7 +92,7 @@ require_once "action.php";
 
   <div class="b-example-divider"></div>
   <div id="content"></div>
-
+  
 <?php
 
 if(!empty($_GET["p"]))

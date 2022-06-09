@@ -47,9 +47,8 @@ require_once "db_config.php";
       if($_GET["user-type"]==1)
       {
         echo "<div class=\"row\">";
-        echo "<input type=\"submit\" name=\"s\" class=\"col-12 col-md-4 btn btn-primary\" value=\"discard\">";
-        echo "<input type=\"submit\" name=\"s\" class=\"col-12 col-md-4 btn btn-primary\" value=\"delete\">";
-        echo "<input type=\"submit\" name=\"s\" class=\"col-12 col-md-4 btn btn-primary\" value=\"edit\">";
+        echo "<input type=\"submit\" name=\"s\" class=\"col-12 col-md-6 btn btn-primary\" value=\"discard\">";
+        echo "<input type=\"submit\" name=\"s\" class=\"col-12 col-md-6 btn btn-primary\" value=\"edit\">";
         echo "</div>";
       }
       else{

@@ -28,7 +28,7 @@ require_once "db_config.php";
 <div class="container">
   <main>
     <div class="py-5 text-center">
-      <img class="d-block mx-auto mb-4" src="../assets/brand/bootstrap-logo.svg" alt="logo" width="72" height="57">
+      
       <h2>Sign-up</h2>
       <p class="lead">Registering...</p>
     </div>

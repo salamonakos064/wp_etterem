@@ -89,7 +89,7 @@ require_once "action.php";
 
 </div>
 <div class="row mt-5">
-<p class= "col-12 col-md-6 d-flex justify-content-center">Sunset gourmet is a small,but passionate restaurant. On this webpage we offer our guests ways to reserve a table at our restaurant.</p>
+<p class= "col-12 col-md-6 d-flex justify-content-center">Sunset gourmet is a small,but passionate restaurant. On this webpage we offer our guests ways to reserve a table at our restaurant. You can take a look at the menu on the top of the page</p>
 <img src="img/img1.jpg" alt="restaurant" class="col-12 col-md-6">
 </div>
 </div>

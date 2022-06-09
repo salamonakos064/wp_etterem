@@ -18,15 +18,10 @@ if($_POST["s"]=="discard")
 else if($_POST["s"]=="book")
 {
     $notes=$_POST["notes"];
-    
     $notes=str_replace("'","\'",$notes);
-    echo $notes;
     $sql="update reservation set activated=0,notes='$notes' where reservation_code='$reserve'";
 }
-else if($_POST["s"]=="delete")
-{
-    $sql="delete from reservation where reservation_code='$reserve'";
-}
+
 else if($_POST["s"]=="edit")
 {
    header("location:edit.php?p=$reserve");

@@ -61,7 +61,7 @@ require_once "db_config.php";
         <li><a href="reserve.php" class="nav-link px-2 link-dark">Reserve now</a></li>
         <li><a href="current.php" class="nav-link px-2 link-dark">Current spaces</a></li>
  
-        <li><a href="copy.php" class="nav-link px-2 link-secondary">About</a></li>
+        <li><a href="copy.php" class="nav-link px-2 link-dark">About</a></li>
     
       <?php
       

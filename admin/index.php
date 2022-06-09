@@ -24,7 +24,16 @@ if($_SESSION["user-type"]!=3)
     <a href="content.php?p=2" class="button-custom">Reservations</a>
     <a href="content.php?p=5" class="button-custom">Foods</a>
     <a href="content.php?p=3" class="button-custom">Users</a>
-    <a href="content.php?p=4" class="button-custom">Menu</a>
+    <a href="../index.php" class="button-custom">Back to the regular website</a>
+    <?php
+    if(!empty($_GET["p"]))
+    {
+        if($_GET["p"]==1)
+        {
+            echo "<div class=\"alert alert-danger\" role=\"alert\">An error has occured</div>";
+        }
+    }
+    ?>
 </div>
     </div>
 </body>
