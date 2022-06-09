@@ -1,3 +1,10 @@
+<?php
+session_start();
+if($_SESSION["user-type"]!=3)
+{
+    header("location:../index.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +23,7 @@
     <a href="content.php?p=1" class="button-custom">Tables</a>
     <a href="content.php?p=2" class="button-custom">Reservations</a>
     <a href="content.php?p=3" class="button-custom">Users</a>
+    <a href="content.php?p=4" class="button-custom">Menu</a>
 </div>
     </div>
 </body>

@@ -42,6 +42,19 @@ if($_POST["s"]=="reserve")
     $res=$conn->prepare($sql);
     $res->execute();
     $row=$conn->lastInsertId();
+    
+    if(!empty($_POST["food"]) && !empty($_POST["quantity"]))
+    {   
+        $quantity=$_POST["quantity"];
+        foreach($_POST["food"] as $rows=>$value)
+        {
+            $temp=$quantity[$rows];
+           $sql="insert into orders values('$row','$rows','$temp')";
+           $result=$conn->prepare($sql);
+           $result->execute();  
+           echo "wat";            
+        }
+    }
     if($res->rowCount()>0){
        
         requestEmail($reserve,$_POST["email"],$row,3);

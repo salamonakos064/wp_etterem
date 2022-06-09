@@ -68,7 +68,7 @@ require_once "action.php";
         <li><a href="current.php" class="nav-link px-2 link-dark">Current spaces</a></li>
  
         <li><a href="copy.php" class="nav-link px-2 link-secondary">About</a></li>
-      </ul>
+    
       <?php
       
       headerSite();

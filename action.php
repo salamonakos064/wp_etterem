@@ -52,9 +52,15 @@ function headerSite(){
         $_SESSION["user-type"]=$_COOKIE["data3"];
         $_SESSION["email"]=$_COOKIE["data4"];
     }
+    
     if(isset($_SESSION["user-name"]) and !empty($_SESSION["user-name"]) )
 {
-     
+    if($_SESSION["user-type"]==3)
+    {
+        echo "<li><a href=\"admin/index.php\" class=\"nav-link px-2 link-dark\">Admin Page</a></li>";
+        
+    } 
+    echo "</ul>";
 	 echo "<div class=\"dropdown text-end\">";
      echo "<a href=\"#\" class=\"d-block link-dark text-decoration-none dropdown-toggle\" id=\"dropdownUser1\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">";
     echo "<img src=\"img/user.png\" alt=\"img\" width=\"32\" height=\"32\" class=\"rounded-circle\">";
@@ -69,6 +75,7 @@ function headerSite(){
    echo "</div>";
 }
 else{
+    echo "</ul>";
 echo "<div class=\"col-md-3 text-end\">";
 echo "<a href=\"sign.php\"> <button type=\"button\" class=\"btn btn-outline-primary me-2\">Login</button></a>";
  echo "<a href=\"register.php\"><button type=\"button\" class=\"btn btn-primary\">Sign-up</button></a>";

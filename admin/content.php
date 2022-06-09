@@ -1,5 +1,10 @@
 <?php
 require_once "../db_config.php";
+session_start();
+if($_SESSION["user-type"]!=3)
+{
+    header("location:../index.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,13 +22,30 @@ require_once "../db_config.php";
     echo "<table class=\"table-design\">";
         if($_GET["p"]==1)
         {
+            if(!empty($_GET["v"]) && !empty($_GET["value"])){
+            if($_GET["v"]=="delete")
+            {
+                $value=$_GET["value"];
+                $sql="delete from tables where table_number='$value'";
+                $result=$conn->prepare($sql);
+                $result->execute();
+                
+            }
+        }
             $sql="select * from tables";
             echo "<tr><td></td><td>table_num</td>
             <td>number of seats</td><td>smoking</td></tr>";
         }
         else if($_GET["p"]==2)
         {
-            $sql="select * from reservation order by activated desc";
+            
+            $sql="select * from reservation ";
+            if(!empty($_GET["date"]))
+            {
+                $date=$_GET["date"];
+                $sql.="where date between '$date' and date_add('$date',Interval 1 day) ";   
+            }
+            $sql.="order by activated desc";
             echo "<tr><td></td><td>reservation_code</td>
             <td>user_name</td><td>table number</td>
             <td>date</td>
@@ -31,6 +53,7 @@ require_once "../db_config.php";
             <td>notes</td>
             <td>activated</td>
             <td>deleted by user</td></tr>";
+           
         }
         else if($_GET["p"]==3)
         {
@@ -41,7 +64,8 @@ require_once "../db_config.php";
         else{
             header("location:index.php");
         }
-
+        echo "<form method=\"get\" action=\"content.php\">";
+        
         $result=$conn->prepare($sql);
         $result->execute();
         $result->setFetchMode(PDO::FETCH_NUM);
@@ -57,13 +81,27 @@ require_once "../db_config.php";
             echo "</tr>";
         }
         echo "</table>";
+        if($_GET["p"]==1)
+        {
+            echo "<div class=\"row\">";
+           
+            echo "<input type=\"hidden\" name=\"p\" value=\"1\">";
+            echo "<input type=\"submit\" name=\"v\" value=\"edit\" class=\"button-size col-4\">";
+            echo "<input type=\"submit\" name=\"v\" value=\"delete\" class=\"button-size col-4\">";
+            echo "<input type=\"submit\" name=\"v\" value=\"insert\" class=\"button-size col-4\">";
+            echo "</div>";
+            echo "</form>";
+        }
         if($_GET["p"]==2)
         {
             echo "<div class=\"row\">";
-            echo "<input type=\"date\" class=\"button-size col-6\">";
+            echo "<input type=\"date\" name=\"date\" class=\"button-size col-6\">";
+            echo "<input type=\"hidden\" name=\"p\" value=\"2\">";
             echo "<input type=\"submit\" class=\"button-size col-6\">";
             echo "</div>";
+            
         }
+        echo "</form>";
     ?>
 </body>
 </html>

@@ -71,7 +71,7 @@ require_once "action.php";
         <li><a href="current.php" class="nav-link px-2 link-dark">Current spaces</a></li>
        
         <li><a href="copy.php" class="nav-link px-2 link-dark">About</a></li>
-      </ul>
+   
 
      
       <?php
@@ -126,6 +126,19 @@ require_once "action.php";
     
 
     <?php
+    $sql="select id,name from food where recommendation_date is null or recommendation_date=curdate()";
+    $result=$conn->prepare($sql);
+    $result->execute();
+    $result->setFetchMode(PDO::FETCH_NUM);
+    echo "<table class=\"table-design\">";
+    echo "<tr><td></td><td>name</td><td>quantity</td></tr>";
+    while($row=$result->fetch())
+    {
+        echo "<tr><td><input type=\"checkbox\"  name=\"food[$row[0]]\"></td><td>$row[1]</td><td><input type=\"number\" name=\"quantity[$row[0]]\"></td></tr>";
+       
+    }
+    echo "</table>";
+    
     if(!empty($_SESSION["user-name"]))
     {
       $user=$_SESSION["user-name"];
