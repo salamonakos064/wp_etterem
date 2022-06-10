@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2022 at 11:13 AM
+-- Generation Time: Jun 10, 2022 at 06:22 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -56,15 +56,6 @@ CREATE TABLE `orders` (
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `orders`
---
-
-INSERT INTO `orders` (`res_id`, `food_id`, `quantity`) VALUES
-(44, 2, 14),
-(44, 4, 12),
-(45, 1, 123);
-
 -- --------------------------------------------------------
 
 --
@@ -82,44 +73,6 @@ CREATE TABLE `reservation` (
   `deleted_by_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `reservation`
---
-
-INSERT INTO `reservation` (`reservation_code`, `user_name`, `table_number`, `date`, `reservation_duration`, `notes`, `activated`, `deleted_by_user`) VALUES
-(8, 'e', 2, '2022-06-08 21:11:35', '2022-06-08 09:11:35', '', 1, 0),
-(9, 'w', 5, '2022-06-17 02:55:00', '2022-06-17 08:55:00', '', 1, 1),
-(10, 'w', 3, '2022-06-08 09:11:35', '2022-06-08 09:11:35', '', 1, 1),
-(11, 'f', 2, '2022-06-08 23:08:04', '2022-06-08 23:08:04', '', 1, 0),
-(15, 'e', 2, '2022-06-08 23:21:25', '2022-06-08 23:21:25', '', 1, 0),
-(18, 'w', 5, '2022-06-22 00:14:00', '2022-06-22 06:14:00', '', 0, 1),
-(19, 'w', 5, '2022-06-23 02:52:00', '2022-06-23 03:52:00', '', 0, 1),
-(20, 'w', 5, '2018-06-06 05:02:00', '2018-06-06 06:02:00', '', 1, 0),
-(21, 'w', 5, '0000-00-00 00:00:00', NULL, '', 1, 0),
-(22, 'w', 5, '0000-00-00 00:00:00', NULL, '', 1, 0),
-(23, 'w', 5, '0000-00-00 00:00:00', NULL, '', 1, 0),
-(24, 'w', 5, '2023-05-10 02:16:00', '2023-05-10 07:16:00', '', 1, 0),
-(25, 'w', 5, '2023-08-10 23:16:00', '2023-08-11 00:16:00', '', 1, 0),
-(26, 'w', 5, '2022-06-20 01:21:00', '2022-06-20 02:21:00', '', 1, 0),
-(27, 'w', 5, '2022-06-29 01:22:00', '2022-06-29 02:22:00', '', 1, 0),
-(28, 'w', 5, '2022-06-30 12:22:00', '2022-06-30 13:22:00', '', 1, 0),
-(29, 'w', 5, '2022-06-20 08:12:00', '2022-06-20 09:12:00', '', 1, 0),
-(30, 'weat', 5, '2022-06-27 08:02:00', '2022-06-27 14:02:00', '', 0, 1),
-(31, 'weat', 5, '2022-09-14 05:24:00', '2022-09-14 06:24:00', '', 0, 1),
-(32, 'weat', 5, '2022-06-14 06:30:00', '2022-06-14 07:30:00', '', 0, 1),
-(34, 'w', 14, '2022-06-14 11:03:00', '2022-06-14 16:03:00', '', 1, 0),
-(35, 'admin', 5, '2025-08-11 13:02:00', '2025-08-11 14:02:00', '', 1, 0),
-(36, 'admin', 5, '2023-07-10 12:05:00', '2023-07-10 13:05:00', '', 1, 0),
-(37, 'admin', 5, '2022-09-21 12:05:00', '2022-09-21 13:05:00', '', 1, 0),
-(38, 'admin', 5, '2023-06-20 00:06:00', '2023-06-20 01:06:00', '', 1, 0),
-(39, 'admin', 5, '2023-07-10 01:07:00', '2023-07-10 02:07:00', '', 1, 0),
-(40, 'admin', 5, '2121-03-14 05:24:00', '2121-03-14 06:24:00', '', 1, 0),
-(41, 'admin', 5, '2029-07-10 00:08:00', '2029-07-10 03:08:00', '', 1, 0),
-(42, 'admin', 5, '2029-07-10 14:10:00', '2029-07-10 19:10:00', '', 1, 0),
-(43, 'admin', 1, '2024-07-10 12:10:00', '2024-07-10 13:10:00', '', 1, 0),
-(44, 'admin', 5, '2024-08-11 01:12:00', '2024-08-11 02:12:00', '', 1, 0),
-(45, 'admin', 5, '2025-07-10 01:13:00', '2025-07-10 02:13:00', '', 1, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -129,7 +82,7 @@ INSERT INTO `reservation` (`reservation_code`, `user_name`, `table_number`, `dat
 CREATE TABLE `tables` (
   `table_number` int(11) NOT NULL,
   `num_of_seats` int(11) NOT NULL,
-  `smoking` bit(1) NOT NULL
+  `smoking` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -137,21 +90,21 @@ CREATE TABLE `tables` (
 --
 
 INSERT INTO `tables` (`table_number`, `num_of_seats`, `smoking`) VALUES
-(1, 4, b'0'),
-(2, 4, b'0'),
-(3, 4, b'0'),
-(4, 8, b'1'),
-(5, 2, b'0'),
-(6, 4, b'0'),
-(7, 4, b'1'),
-(8, 2, b'0'),
-(9, 4, b'0'),
-(10, 2, b'0'),
-(11, 6, b'0'),
-(12, 6, b'0'),
-(13, 6, b'0'),
-(14, 4, b'1'),
-(15, 4, b'1');
+(1, 4, 0),
+(2, 4, 0),
+(3, 4, 0),
+(4, 8, 1),
+(5, 2, 0),
+(6, 2, 0),
+(7, 7, 0),
+(8, 2, 0),
+(9, 2, 0),
+(10, 4, 1),
+(11, 8, 1),
+(12, 6, 0),
+(13, 6, 0),
+(14, 4, 1),
+(15, 8, 1);
 
 -- --------------------------------------------------------
 
@@ -180,8 +133,11 @@ INSERT INTO `user` (`user_name`, `email`, `password`, `first_name`, `last_name`,
 ('admin', 'admin@example.com', '$2y$10$WWJgS1dttJx1x/fvKDddUuUszJDctgdR984IVa5myrRC95QjCKgse', 'admin', 'admin', NULL, 3, b'1', NULL, NULL),
 ('e', 'e@e.com', '$2y$10$Zcr.Z209MwFbVJ9Lw9RVou2cOoEMlR1vWehWlUAagAEjMBcVKV57i', 'Rw', 'ag', '', 1, b'1', NULL, NULL),
 ('f', 'f@v.com', '$2y$10$SyxDbCz6yKZmrBIEee3ME.aTOrh8KdcM78unsT7m93YO85R87RCbm', 'fd', 'sav', '', 1, b'1', NULL, NULL),
-('w', 'w@w.com', '$2y$10$4TB8p7WDjtSfUHdSj2UC7O388ulemwvpXqVBAcTAWb.8ezePiRN2e', 'dagh', 'ah', '', 2, b'1', NULL, NULL),
-('weat', 'weat@e.com', '$2y$10$OgIX72NIgZ9JJAI8.zeNAOyaClT7lTuxuqNjKTKcIWU3hs74vaVzu', 'da', 'asb', 'ag', 1, b'1', NULL, NULL);
+('twe', 'twe@c.com', '$2y$10$Y1NvB3okbkIdiMO50N3p0eVYgeRWrjeqWXPDRZ./4jo2SrArRRv0W', 'salh;', 'ahr', '12', 2, b'1', NULL, NULL),
+('w', 'w@w.com', '$2y$10$G.Sv00Z4iRxO9TAe.Tf4aukqpqMbhgOJpwK07vheTIRJ/UH/k7W0a', 'dagh', 'ah', '', 2, b'1', NULL, NULL),
+('wc', 'wc@wc.com', '$2y$10$399qiksZJwMiUeiDXyXgluRwjgP8cMRK0/ux5dZffwn/b5DfsbKWW', 'ewfaw', 'wah', 'awg', 1, b'1', NULL, NULL),
+('weat', 'weat@e.com', '$2y$10$OgIX72NIgZ9JJAI8.zeNAOyaClT7lTuxuqNjKTKcIWU3hs74vaVzu', 'da', 'asb', 'ag', 1, b'1', NULL, NULL),
+('wefa', 'wefa@c.com', '$2y$10$e5E.EnjHizC0nUsL5pKSAOIbPncKGZaNSCE7vyz5t/grYbh7b7olC', 'rqew', 'agd', '12', 1, b'1', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -258,7 +214,7 @@ ALTER TABLE `user_rights`
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `reservation_code` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `reservation_code` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- Constraints for dumped tables

@@ -45,7 +45,7 @@ if($_SESSION["user-type"]!=3)
         }
         if(!empty($_GET["b"]))
         {
-        if($_GET["b"]=="insert")
+        if($_GET["b"]=="insert" && $_GET["smoke"]>=0 && $_GET["smoke"]<2 && !empty($_GET["value"]) && !empty($_GET["seat"]))
         {
             
             $table=$_GET["value"];
@@ -63,7 +63,7 @@ if($_SESSION["user-type"]!=3)
             }
            
         }
-        if($_GET["b"]=="edit" && !empty($_GET["seat"]) && !empty($_GET["smoke"]))
+        if($_GET["b"]=="edit" && !empty($_GET["seat"]) && isset($_GET["smoke"] ) && $_GET["smoke"]>=0 && $_GET["smoke"]<2)
         {
             
             $table=$_GET["value"];
