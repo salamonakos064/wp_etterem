@@ -152,7 +152,7 @@ if($_SESSION["user-type"]!=3)
                    if(!empty($_GET["phone"]))
                    {
                        $phone=$_GET["phone"];
-                       $sql.=",phone='$phone' ";
+                       $sql.=",phone_number='$phone' ";
                    }
                    $sql.="where user_name='$value'";
                    $result=$conn->prepare($sql);
@@ -162,7 +162,7 @@ if($_SESSION["user-type"]!=3)
                    }
                    catch(Exception $e)
                     {
-                    header("location:index.php?p=1");
+                        header("location:index.php?p=1");
                     }   
             }
             if($_GET["b"]=="insert" && !empty($_GET["email"]) && !empty($_GET["first_name"]) && !empty($_GET["last_name"]) && !empty($_GET["password"]))
