@@ -1,4 +1,5 @@
 //loading the values from the database
+"use strict";
 window.addEventListener('load',function(){
     getTables();
     getDuration();
@@ -10,6 +11,7 @@ window.addEventListener('load',function(){
             getTables();
 })
 })
+//function to get the tables
 function getTables(){
 
     const a=new XMLHttpRequest();

@@ -27,6 +27,10 @@ else if($_POST["s"]=="edit")
    header("location:edit.php?p=$reserve");
  
 }
+else if($_POST["s"]=="orders")
+{
+    header("location:food.php?p=$reserve");
+}
 $result=$conn->prepare($sql);
 $result->execute();
 

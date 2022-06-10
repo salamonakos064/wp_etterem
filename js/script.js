@@ -1,5 +1,5 @@
 //loading the database
-
+"use strict";
 window.addEventListener("load",function(){
   
     getDatabase(name,type);
