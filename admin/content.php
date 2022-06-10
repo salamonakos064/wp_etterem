@@ -313,8 +313,8 @@ if($_SESSION["user-type"]!=3)
                 if($_GET["v"]=="edit")
                 {
                     echo "<form method=\"get\" action=\"content.php\">";
-                    echo "<input type=\"text\" id=\"name\" name=\"seat\" placeholder=\"num of seats\" class=\"form-control needs-validation\">";
-                    echo "<input type=\"text\" id=\"name\" name=\"smoke\" placeholder=\"smoking\" class=\"form-control needs-validation\">";
+                    echo "<input type=\"text\" id=\"name\" name=\"seat\" placeholder=\"num of seats\" class=\"button-size col-6 needs-validation\">";
+                    echo "<input type=\"text\" id=\"name\" name=\"smoke\" placeholder=\"smoking\" class=\"button-size col-6 needs-validation\">";
                     echo "<input type=\"hidden\" name=\"b\" value=\"edit\">";
                     echo "<input type=\"submit\" name=\"i\" class=\"button-size col-4\">";
                     echo "</form>";
@@ -325,9 +325,9 @@ if($_SESSION["user-type"]!=3)
                 if($_GET["v"]=="insert")
                 {
                     echo "<form method=\"get\" action=\"content.php\">";
-                    echo "<input type=\"number\" id=\"name\" name=\"value\" placeholder=\"table num\" class=\"form-control needs-validation\">";
-                    echo "<input type=\"text\" id=\"name\" name=\"seat\" placeholder=\"num of seats\" class=\"form-control needs-validation\">";
-                    echo "<input type=\"text\" id=\"name\" name=\"smoke\" placeholder=\"smoking\" class=\"form-control needs-validation\">";
+                    echo "<input type=\"number\" id=\"name\" name=\"value\" placeholder=\"table num\" class=\"button-size col-4 needs-validation\">";
+                    echo "<input type=\"text\" id=\"name\" name=\"seat\" placeholder=\"num of seats\" class=\"button-size col-4 needs-validation\">";
+                    echo "<input type=\"text\" id=\"name\" name=\"smoke\" placeholder=\"smoking\" class=\"button-size col-4 needs-validation\">";
                     echo "<input type=\"hidden\" name=\"b\" value=\"insert\">";
                     echo "<input type=\"submit\" name=\"i\" class=\"button-size col-4\">";
                     echo "</form>";
@@ -377,10 +377,10 @@ if($_SESSION["user-type"]!=3)
                 {
                     echo "<input type=\"hidden\" name=\"p\" value=\"3\">";
                     echo "<input type=\"hidden\" name=\"b\" value=\"edit\">";
-                    echo "<input type=\"text\" name=\"first_name\" placeholder=\"first_name\" class=\"button-size col-4  needs-validation\">";
-                    echo "<input type=\"text\" name=\"last_name\" placeholder=\"last_name\" class=\"button-size col-4 needs-validation\">";
-                    echo "<input type=\"password\" name=\"password\" placeholder=\"password\" class=\"button-size col-4  needs-validation\">";
-                    echo "<input type=\"text\" name=\"phone\" placeholder=\"phone\" class=\"button-size col-4 needs-validation\">";
+                    echo "<input type=\"text\" name=\"first_name\" placeholder=\"first_name\" class=\"button-size col-6  needs-validation\">";
+                    echo "<input type=\"text\" name=\"last_name\" placeholder=\"last_name\" class=\"button-size col-6 needs-validation\">";
+                    echo "<input type=\"password\" name=\"password\" placeholder=\"password\" class=\"button-size col-6  needs-validation\">";
+                    echo "<input type=\"text\" name=\"phone\" placeholder=\"phone\" class=\"button-size col-6 needs-validation\">";
                     
                     echo "<input type=\"submit\" name=\"i\" class=\"button-size col-12\">";
                 }
@@ -416,7 +416,7 @@ if($_SESSION["user-type"]!=3)
                     echo "<input type=\"hidden\" name=\"p\" value=\"5\">";
                     echo "<input type=\"number\" id=\"id\" name=\"id\" placeholder=\"id\" class=\"form-control needs-validation\">";
                     echo "<input type=\"text\" id=\"name\" name=\"name\" placeholder=\"name\" class=\"form-control needs-validation\">";
-                    echo "<input type=\"hidden\" name=\"v\" value=\"insert\">";
+                    
                     echo "<input type=\"submit\" name=\"i\" class=\"button-size col-4\">";
                     echo "</form>";
                 }
