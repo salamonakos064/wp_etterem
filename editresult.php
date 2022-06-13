@@ -49,10 +49,12 @@ else if($_POST["s"]=="reserve")
         foreach($_POST["food"] as $rows=>$value)
         {
             $temp=$quantity[$rows];
-           $sql="insert into orders values('$row','$rows','$temp')";
-           $result=$conn->prepare($sql);
-           $result->execute();  
-                    
+            if($quantity[$rows]>0)
+            {
+                $sql="insert into orders values('$row','$rows','$temp')";
+                $result=$conn->prepare($sql);
+                $result->execute();  
+            }        
         }
     }
     if($res->rowCount()>0){
