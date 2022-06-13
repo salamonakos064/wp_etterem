@@ -9,7 +9,7 @@ $reserve=$_POST["reserve"];
 $table=$_POST["number"];
 $date=$_POST["date"];
 $duration=$_POST["duration"];
-$sql="select * from reservation where table_number='$table' and reservation_code<>'$reserve' and (date between '$date' and DATE_ADD('$date',Interval '$duration' hour) or reservation_duration between '$date' and DATE_ADD('$date',interval '$duration' hour)) ";
+$sql="select * from reservation where table_number='$table' and reservation_code<>'$reserve' and (date between '$date' and DATE_ADD('$date',Interval '$duration' hour) or reservation_duration between '$date' and DATE_ADD('$date',interval '$duration' hour)) and activated=1";
     $res=$conn->prepare($sql);
     $res->execute();
 if($_POST["s"]=="update")
