@@ -24,7 +24,7 @@ require_once "db_config.php";
       echo "<h1 class=\"text-center\">Reservations</h1>"; 
       echo "<form method=\"post\" class=\"text-center\" action=\"editdatabase.php\">";
      
-      echo "<table class=\"table-design table mt-3\">";
+      echo "<table class=\"table-design mt-3\">";
       echo "<tr>\n<td>Reservation code</td>\n";
       if($_GET["user-type"]!=1)
       {

@@ -134,7 +134,7 @@ require_once "action.php";
     echo "<tr><td></td><td>name</td><td>quantity</td></tr>";
     while($row=$result->fetch())
     {
-        echo "<tr><td><input type=\"checkbox\"  name=\"food[$row[0]]\"></td><td>$row[1]</td><td><input type=\"number\" name=\"quantity[$row[0]]\"></td></tr>";
+        echo "<tr><td><input type=\"checkbox\"  name=\"food[$row[0]]\"></td><td>$row[1]</td><td><input type=\"number\" class=\"input-style\" name=\"quantity[$row[0]]\"></td></tr>";
        
     }
     echo "</table>";
