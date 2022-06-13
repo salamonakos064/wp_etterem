@@ -7,7 +7,7 @@ if(isset($_GET["p"]) )
         $token=$_GET["token"];
         $pword1=$_GET["password"];
         $pword2=$_GET["password2"];
-        if($pword1==$pword2)
+        if($pword1==$pword2 && strlen($pword1)>=8)
         {
             $password=password_hash($pword1,PASSWORD_DEFAULT);
             $sql="update user set token=null,expiration_date=null,password='$password',activated=1 where token='$token'  and expiration_date>now()";
@@ -23,7 +23,10 @@ if(isset($_GET["p"]) )
             }
         }
         else{
-            header("Location:password.php?token=".$token."&p=7");
+
+                header("Location:password.php?token=".$token."&p=7");
+         
+           
         }
         
     }

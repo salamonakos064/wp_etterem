@@ -22,12 +22,13 @@ else if($_POST["s"]=="book")
     $sql="update reservation set activated=0,notes='$notes' where reservation_code='$reserve'";
 }
 
-else if($_POST["s"]=="edit")
+else if($_POST["e"]=="edit")
 {
-   header("location:edit.php?p=$reserve");
+    $string="edit.php?p=$reserve";
+   header("location:$string");
  
 }
-else if($_POST["s"]=="orders")
+else if($_POST["d"]=="orders")
 {
     header("location:food.php?p=$reserve");
 }
@@ -37,7 +38,7 @@ $result->execute();
 if($result->rowCount()>0){
     header("location:current.php?p=2");
 }
-else{
+else if($_POST["s"]=="discard"){
     header("location:current.php?p=3");
 }
 }

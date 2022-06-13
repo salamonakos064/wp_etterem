@@ -141,7 +141,7 @@ if($_SESSION["user-type"]!=3)
                
             }
             if(!empty($_GET["b"])){
-            if($_GET["b"]=="edit" && !empty($_GET["value"]) && !empty($_GET["first_name"]) && !empty($_GET["last_name"]) && !empty($_GET["password"]))
+            if($_GET["b"]=="edit" && !empty($_GET["value"]) && !empty($_GET["first_name"]) && !empty($_GET["last_name"]) && !empty($_GET["password"])&& strlen($_GET["password"])>=8)
             {
                 $value=$_GET["value"];
                 $fname=$_GET["first_name"];
@@ -165,7 +165,7 @@ if($_SESSION["user-type"]!=3)
                         header("location:index.php?p=1");
                     }   
             }
-            if($_GET["b"]=="insert" && !empty($_GET["email"]) && !empty($_GET["first_name"]) && !empty($_GET["last_name"]) && !empty($_GET["password"]))
+            if($_GET["b"]=="insert" && !empty($_GET["email"]) && !empty($_GET["first_name"]) && !empty($_GET["last_name"]) && !empty($_GET["password"]) && strlen($_GET["password"])>=8)
             {
                 $bool=filter_var($_GET["email"],FILTER_VALIDATE_EMAIL);
                 if(!($bool))
@@ -204,9 +204,9 @@ if($_SESSION["user-type"]!=3)
             }}
         }
             
-            $sql="select * from user where user_type=2";
+            $sql="select user_name,email,first_name,last_name,phone_number,user_type,activated from user where user_type=2";
             echo "<tr><td></td><td>user name</td>
-            <td>email</td><td>password</td><td>first name</td><td>last name</td><td>phone number</td><td>user type</td> <td>activated</td></tr>";
+            <td>email</td><td>first name</td><td>last name</td><td>phone number</td><td>user type</td> <td>activated</td></tr>";
         }
         else if($_GET["p"]==5)
         {
@@ -314,7 +314,11 @@ if($_SESSION["user-type"]!=3)
                 {
                     echo "<form method=\"get\" action=\"content.php\">";
                     echo "<input type=\"text\" id=\"name\" name=\"seat\" placeholder=\"num of seats\" class=\"button-size col-6 needs-validation\">";
-                    echo "<input type=\"text\" id=\"name\" name=\"smoke\" placeholder=\"smoking\" class=\"button-size col-6 needs-validation\">";
+                    echo "<label for=\"smoke\" class=\"col-2\">smoke</label>";
+                    echo "<select name=\"smoke\" id=\"smoke\"class=\"button-size col-4 needs-validation\">";
+                    echo "<option value=\"0\">no</option>";
+                    echo "<option value=\"1\">yes</option>";
+                    echo "</select>";
                     echo "<input type=\"hidden\" name=\"b\" value=\"edit\">";
                     echo "<input type=\"submit\" name=\"i\" class=\"button-size col-4\">";
                     echo "</form>";
@@ -325,9 +329,13 @@ if($_SESSION["user-type"]!=3)
                 if($_GET["v"]=="insert")
                 {
                     echo "<form method=\"get\" action=\"content.php\">";
-                    echo "<input type=\"number\" id=\"name\" name=\"value\" placeholder=\"table num\" class=\"button-size col-4 needs-validation\">";
-                    echo "<input type=\"text\" id=\"name\" name=\"seat\" placeholder=\"num of seats\" class=\"button-size col-4 needs-validation\">";
-                    echo "<input type=\"text\" id=\"name\" name=\"smoke\" placeholder=\"smoking\" class=\"button-size col-4 needs-validation\">";
+                    echo "<input type=\"number\" id=\"name\" name=\"value\" placeholder=\"table num\" class=\"button-size col-3 needs-validation\">";
+                    echo "<input type=\"text\" id=\"name\" name=\"seat\" placeholder=\"num of seats\" class=\"button-size col-3 needs-validation\">";
+                    echo "<label for=\"smoke\" class=\"col-2\">smoke</label>";
+                    echo "<select name=\"smoke\"  id=\"smoke\" class=\"button-size col-4 needs-validation\">";
+                    echo "<option value=\"0\">no</option>";
+                    echo "<option value=\"1\">yes</option>";
+                    echo "</select>";
                     echo "<input type=\"hidden\" name=\"b\" value=\"insert\">";
                     echo "<input type=\"submit\" name=\"i\" class=\"button-size col-4\">";
                     echo "</form>";

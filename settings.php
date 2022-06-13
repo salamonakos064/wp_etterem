@@ -15,12 +15,13 @@ if(!isset($_SESSION["user-name"]))
     <title>Settings</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/checkData.js"></script>
 </head>
 <body class="text-center">
     <h1 class="mt-5">User Data</h1>
-    <form method="POST" action="settings.php" class="margin-side">
+    <form method="POST" action="settings.php" id="form" class="margin-side">
         <label for="password" class="mt-2">Password</label>
-    <input type="password" id="password" name="password" class="form-control">
+    <input type="password" id="password" name="password" id="pword" class="form-control">
     <label for="name" class="mt-2">First Name</label>
     <input type="text" id="name" name="name" class="form-control ">
     <label for="lname" class="mt-2">Last Name</label>
@@ -34,7 +35,7 @@ if(!empty($_POST["password"]) || !empty($_POST["name"]) || !empty($_POST["lname"
 {
     $a="";
     $sql="update user set ";
-    if(!empty($_POST["password"]))
+    if(!empty($_POST["password"]) && strlen($_POST["password"])>=8)
     {
         $password=password_hash($_POST["password"],PASSWORD_DEFAULT);
         $sql.="password='$password'";
@@ -73,6 +74,8 @@ if(!empty($_POST["password"]) || !empty($_POST["name"]) || !empty($_POST["lname"
         $sql.="phone_number='$phone'";
         $a=1;
     }
+    if($a==1)
+    {
     $user=$_SESSION["user-name"];
     $sql.=" where user_name = '$user'" ;
     $result=$conn->prepare($sql);
@@ -81,6 +84,11 @@ if(!empty($_POST["password"]) || !empty($_POST["name"]) || !empty($_POST["lname"
         echo "<div class=\"alert alert-success\" role=\"alert\">User data successfully updated</div>"; 
     }
     else{ echo "<div class=\"alert alert-danger\" role=\"alert\">Could not update user data</div>"; }
+    }
+    else 
+    {
+        echo "<div class=\"alert alert-danger\" role=\"alert\">Could not update user data</div>";
+    }
 }
 
 ?>

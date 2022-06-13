@@ -48,8 +48,8 @@ require_once "db_config.php";
       {
         echo "<div class=\"row\">";
         echo "<input type=\"submit\" name=\"s\" class=\"col-12 col-md-4 btn btn-primary\" value=\"discard\">";
-        echo "<input type=\"submit\" name=\"s\" class=\"col-12 col-md-4 btn btn-primary\" value=\"edit\">";
-        echo "<input type=\"submit\" name=\"s\" class=\"col-12 col-md-4 btn btn-primary\" value=\"orders\">";
+        echo "<input type=\"submit\" name=\"e\" class=\"col-12 col-md-4 btn btn-primary\" value=\"edit\">";
+        echo "<input type=\"submit\" name=\"d\" class=\"col-12 col-md-4 btn btn-primary\" value=\"orders\">";
         echo "</div>";
       }
       else{

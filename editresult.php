@@ -30,7 +30,7 @@ if($_POST["s"]=="update")
     }
     }
 }
-if($_POST["s"]=="reserve")
+else if($_POST["s"]=="reserve")
 {
     if($res->rowCount()>0)
     {

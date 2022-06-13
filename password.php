@@ -31,7 +31,7 @@ if(isset($_GET["token"])){
     echo "<div class=\"alert alert-danger\" role=\"alert\">";
     if($_GET["p"]==7)
     {
-        echo "Passwords don't match up";
+        echo "Passwords don't match up or too short";
     }
     if($_GET["p"]==9)
     {

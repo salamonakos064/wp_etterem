@@ -116,6 +116,10 @@ require_once "db_config.php";
     {
         echo "Email server is not working";
     }
+    if($_GET["p"]==8)
+    {
+        echo "Password too short";
+    }
     echo "</div>";
   }
   ?>
